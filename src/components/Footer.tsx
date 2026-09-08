@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="font-sans text-xs sm:text-sm text-lavender max-w-md leading-relaxed">
-              Premier Site Management Organization (SMO) and clinical research partner providing turn-key trial execution, patient accrual, and CDSCO/ICH-GCP compliance across India.
+              Site Management Organization (SMO) and clinical research partner providing trial execution, trained CRC personnel, and CDSCO/ICH-GCP regulatory compliance across India.
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
               <span className="px-2.5 py-1 rounded bg-aubergine-800 border border-lavender/20 text-[10px] font-grotesk font-semibold text-eucalyptus uppercase">
@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
                 CDSCO Regulated
               </span>
               <span className="px-2.5 py-1 rounded bg-aubergine-800 border border-lavender/20 text-[10px] font-grotesk font-semibold text-eucalyptus uppercase">
-                ISO 9001:2015 Ready
+                Oncology Focus
               </span>
             </div>
           </div>
@@ -39,45 +39,51 @@ export const Footer: React.FC = () => {
               Clinical Services
             </h4>
             <ul className="space-y-2 text-xs font-sans text-lavender">
+              <li><a href="#services" className="hover:text-warmwhite transition-colors">Oncology & Hemato-Oncology</a></li>
               <li><a href="#services" className="hover:text-warmwhite transition-colors">Site Management (SMO)</a></li>
-              <li><a href="#services" className="hover:text-warmwhite transition-colors">Phase I–IV Trials</a></li>
+              <li><a href="#services" className="hover:text-warmwhite transition-colors">BA/BE Studies</a></li>
+              <li><a href="#services" className="hover:text-warmwhite transition-colors">Ophthalmology Trials</a></li>
               <li><a href="#services" className="hover:text-warmwhite transition-colors">Regulatory & IEC Liaison</a></li>
-              <li><a href="#services" className="hover:text-warmwhite transition-colors">Medical Writing & CSR</a></li>
-              <li><a href="#services" className="hover:text-warmwhite transition-colors">AYUSH & Herbal Studies</a></li>
-              <li><a href="#services" className="hover:text-warmwhite transition-colors">GCP Investigator Training</a></li>
             </ul>
           </div>
 
-          {/* Col 4: Therapeutic */}
+          {/* Col 4: Training & Programs */}
           <div>
             <h4 className="font-grotesk text-xs uppercase tracking-wider font-bold text-honey mb-4">
-              Therapeutics
+              Career & Trainings
             </h4>
             <ul className="space-y-2 text-xs font-sans text-lavender">
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Oncology & Hematology</a></li>
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Endocrinology & Diabetes</a></li>
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Cardiovascular Diseases</a></li>
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Pulmonology & Asthma</a></li>
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Dermatology & Skin</a></li>
-              <li><a href="#therapeutics" className="hover:text-warmwhite transition-colors">Neurology & Pain</a></li>
+              <li><a href="#trainings" className="hover:text-warmwhite transition-colors">Certificate in Clinical Research</a></li>
+              <li><a href="#trainings" className="hover:text-warmwhite transition-colors">Certificate in Pharmacovigilance</a></li>
+              <li><a href="#trainings" className="hover:text-warmwhite transition-colors">ICH-GCP Compliance Workshop</a></li>
+              <li><a href="#trainings" className="hover:text-warmwhite transition-colors">Hospital Site Staff Trainings</a></li>
+              <li><a href="#trainings" className="hover:text-warmwhite transition-colors">CRC Professional Training</a></li>
             </ul>
           </div>
 
           {/* Col 5: Governance & Protocol Desk */}
           <div>
             <h4 className="font-grotesk text-xs uppercase tracking-wider font-bold text-honey mb-4">
-              Protocol Inquiries
+              Education & Inquiries
             </h4>
             <div className="space-y-3 text-xs font-sans text-lavender">
               <p className="leading-relaxed">
-                Direct submissions for trial feasibility, site partnership, or ethics committee documentation via our portal.
+                Explore Certificate Courses in Clinical Research and Pharmacovigilance, or submit protocol feasibility.
               </p>
-              <a 
-                href="#feasibility" 
-                className="inline-block px-4 py-2 rounded-lg bg-honey/20 text-honey hover:bg-honey hover:text-aubergine-950 font-grotesk text-[11px] font-bold uppercase tracking-wider transition-colors"
-              >
-                Open Feasibility Form
-              </a>
+              <div className="space-y-2 pt-1">
+                <a 
+                  href="#trainings" 
+                  className="block text-honey hover:underline font-grotesk text-xs font-bold uppercase tracking-wider"
+                >
+                  Courses & Trainings →
+                </a>
+                <a 
+                  href="#feasibility" 
+                  className="inline-block px-4 py-2 rounded-lg bg-honey/20 text-honey hover:bg-honey hover:text-aubergine-950 font-grotesk text-[11px] font-bold uppercase tracking-wider transition-colors"
+                >
+                  Open Feasibility Form
+                </a>
+              </div>
             </div>
           </div>
 

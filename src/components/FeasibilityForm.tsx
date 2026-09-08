@@ -57,7 +57,7 @@ export const FeasibilityForm: React.FC = () => {
                     48-Hour Feasibility Review
                   </h4>
                   <p className="font-sans text-xs text-aubergine-700 mt-1 leading-relaxed">
-                    Dedicated clinical evaluation team maps investigator availability, bed capacity, and patient census within 48 business hours.
+                    Dedicated clinical evaluation team maps investigator availability, site infrastructure, and protocol feasibility within 48 business hours.
                   </p>
                 </div>
               </div>
@@ -201,10 +201,10 @@ export const FeasibilityForm: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, therapeuticArea: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white"
                     >
-                      <option value="Oncology">Oncology & Hematology</option>
+                      <option value="Oncology">Oncology & Hemato-Oncology</option>
+                      <option value="Ophthalmology">Ophthalmology</option>
                       <option value="Endocrinology">Endocrinology & Diabetes</option>
                       <option value="Cardiology">Cardiovascular Medicine</option>
-                      <option value="AYUSH">AYUSH & Herbal Formulations</option>
                       <option value="Pulmonology">Pulmonology & Respiratory</option>
                       <option value="Dermatology">Dermatology & Immunology</option>
                       <option value="Neurology">Neurology & CNS</option>

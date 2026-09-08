@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ArrowRight, Activity, CheckCircle2, Play, Pause } from 'lucide-react';
+import { ArrowRight, Activity, CheckCircle2, Play, Pause, ShieldCheck, Dna, Building2, Clock } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -20,7 +20,6 @@ export const Hero: React.FC = () => {
     <section className="relative min-h-[92vh] sm:min-h-screen bg-aubergine-700 overflow-hidden flex flex-col justify-between pt-24 sm:pt-32 pb-12">
       {/* Background Video Layer with Seamless Blend */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Video element */}
         <video
           ref={videoRef}
           autoPlay
@@ -33,7 +32,7 @@ export const Hero: React.FC = () => {
           <source src="/dna-hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Multi-stage vignette gradient matching #453747 Aubergine */}
+        {/* Vignette gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-aubergine-700 via-aubergine-700/60 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-aubergine-700 via-transparent to-aubergine-700/80 z-10" />
       </div>
@@ -55,11 +54,11 @@ export const Hero: React.FC = () => {
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-aubergine-900/80 border border-eucalyptus/40 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-eucalyptus animate-pulse" />
             <span className="font-grotesk font-semibold text-xs tracking-wider uppercase text-eucalyptus">
-              CDSCO Compliant • ICH-GCP E6(R2) Accredited SMO
+              CDSCO Compliant • ICH-GCP Accredited SMO
             </span>
           </div>
 
-          {/* Headline in Zodiak Serif with solid high-contrast honey */}
+          {/* Headline */}
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-warmwhite leading-[1.12]">
             Accelerating Clinical Trials With{' '}
             <span className="text-honey">
@@ -68,9 +67,9 @@ export const Hero: React.FC = () => {
             & Flawless Site Execution.
           </h1>
 
-          {/* Subtitle in Author Sans */}
+          {/* Subtitle */}
           <p className="font-sans text-lg sm:text-xl text-warmwhite/85 leading-relaxed max-w-2xl font-normal">
-            Sri Sri Research Solutions bridges global pharmaceutical sponsors, biotechs, and premier Indian hospital networks. Delivering audit-ready Phase I–IV trials, specialized AYUSH research, and dedicated on-site coordinator teams.
+            Sri Sri Research Solutions delivers turnkey clinical trial site management, regulatory liaison, and GCP-certified coordinator infrastructure across India with specialized focus in Oncology & Hemato-Oncology.
           </p>
 
           {/* Dual Action Buttons */}
@@ -111,54 +110,66 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scientific Metrics Ticker Bar */}
+      {/* Operational Pillars Ticker Bar (No confidential numbers) */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12 sm:mt-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl bg-aubergine-900/85 backdrop-blur-md border border-lavender/20 shadow-2xl">
           <div className="flex flex-col border-r border-lavender/10 last:border-0 pr-4">
-            <span className="font-grotesk text-2xl sm:text-3xl lg:text-4xl font-bold text-honey">
-              25+
-            </span>
-            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium mt-1">
-              Active Hospital Sites
+            <div className="flex items-center space-x-2 text-honey mb-1">
+              <ShieldCheck className="w-5 h-5" />
+              <span className="font-grotesk text-base sm:text-lg font-bold text-warmwhite">
+                CDSCO & GCP
+              </span>
+            </div>
+            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium">
+              Regulatory Rigor
             </span>
             <span className="text-[11px] text-warmwhite/60 font-sans mt-0.5">
-              Pan-India Investigator Network
+              Ethics & DCGI Alignments
             </span>
           </div>
 
           <div className="flex flex-col border-r border-lavender/10 last:border-0 pr-4 pl-0 sm:pl-4">
-            <span className="font-grotesk text-2xl sm:text-3xl lg:text-4xl font-bold text-honey">
-              98.4%
-            </span>
-            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium mt-1">
-              Milestone Retention
+            <div className="flex items-center space-x-2 text-honey mb-1">
+              <Dna className="w-5 h-5" />
+              <span className="font-grotesk text-base sm:text-lg font-bold text-warmwhite">
+                Oncology Focus
+              </span>
+            </div>
+            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium">
+              Flagship Specialization
             </span>
             <span className="text-[11px] text-warmwhite/60 font-sans mt-0.5">
-              Strict Patient Follow-Up
+              Solid & Hemato Malignancies
             </span>
           </div>
 
           <div className="flex flex-col border-r border-lavender/10 last:border-0 pr-4 pl-0 md:pl-4">
-            <span className="font-grotesk text-2xl sm:text-3xl lg:text-4xl font-bold text-honey">
-              16+
-            </span>
-            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium mt-1">
-              Therapeutic Areas
+            <div className="flex items-center space-x-2 text-honey mb-1">
+              <Building2 className="w-5 h-5" />
+              <span className="font-grotesk text-base sm:text-lg font-bold text-warmwhite">
+                Turnkey SMO
+              </span>
+            </div>
+            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium">
+              Site Infrastructure
             </span>
             <span className="text-[11px] text-warmwhite/60 font-sans mt-0.5">
-              Pharma, Device & AYUSH
+              Dedicated On-Site CRCs
             </span>
           </div>
 
           <div className="flex flex-col pl-0 md:pl-4">
-            <span className="font-grotesk text-2xl sm:text-3xl lg:text-4xl font-bold text-honey">
-              &lt;48h
-            </span>
-            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium mt-1">
-              Feasibility Turnaround
+            <div className="flex items-center space-x-2 text-honey mb-1">
+              <Clock className="w-5 h-5" />
+              <span className="font-grotesk text-base sm:text-lg font-bold text-warmwhite">
+                Rapid Review
+              </span>
+            </div>
+            <span className="font-grotesk text-xs uppercase tracking-wider text-eucalyptus font-medium">
+              Site Feasibility
             </span>
             <span className="text-[11px] text-warmwhite/60 font-sans mt-0.5">
-              Rapid Investigator Sign-off
+              Protocol Triage & Setup
             </span>
           </div>
         </div>

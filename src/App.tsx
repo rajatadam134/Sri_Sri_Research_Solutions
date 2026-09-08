@@ -2,10 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
-import { Therapeutics } from './components/Therapeutics';
-import { QualityCompliance } from './components/QualityCompliance';
-import { SiteNetwork } from './components/SiteNetwork';
-import { WorkflowTimeline } from './components/WorkflowTimeline';
+import { TrainingsCourses } from './components/TrainingsCourses';
 import { FeasibilityForm } from './components/FeasibilityForm';
 import { Footer } from './components/Footer';
 
@@ -16,10 +13,7 @@ export const App: React.FC = () => {
       <main>
         <Hero />
         <Services />
-        <Therapeutics />
-        <SiteNetwork />
-        <QualityCompliance />
-        <WorkflowTimeline />
+        <TrainingsCourses />
         <FeasibilityForm />
       </main>
       <Footer />

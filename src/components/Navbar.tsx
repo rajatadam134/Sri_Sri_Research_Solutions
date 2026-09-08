@@ -36,14 +36,8 @@ export const Navbar: React.FC = () => {
             <a href="#services" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
               Services
             </a>
-            <a href="#therapeutics" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
-              Therapeutic Areas
-            </a>
-            <a href="#compliance" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
-              Quality & Ethics
-            </a>
-            <a href="#workflow" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
-              Study Lifecycle
+            <a href="#trainings" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
+              Courses & Trainings
             </a>
             <a href="#about" className="text-sm font-sans font-medium text-warmwhite/80 hover:text-honey transition-colors">
               About
@@ -85,25 +79,11 @@ export const Navbar: React.FC = () => {
                 Services
               </a>
               <a 
-                href="#therapeutics" 
+                href="#trainings" 
                 onClick={() => setMobileMenuOpen(false)} 
                 className="px-3 py-2 text-base font-medium text-warmwhite hover:text-honey rounded-lg hover:bg-aubergine-800"
               >
-                Therapeutic Areas
-              </a>
-              <a 
-                href="#compliance" 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="px-3 py-2 text-base font-medium text-warmwhite hover:text-honey rounded-lg hover:bg-aubergine-800"
-              >
-                Quality & Ethics
-              </a>
-              <a 
-                href="#workflow" 
-                onClick={() => setMobileMenuOpen(false)} 
-                className="px-3 py-2 text-base font-medium text-warmwhite hover:text-honey rounded-lg hover:bg-aubergine-800"
-              >
-                Study Lifecycle
+                Courses & Trainings
               </a>
               <a 
                 href="#about" 
