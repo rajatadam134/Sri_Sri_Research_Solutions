@@ -79,3 +79,41 @@
   mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
 }
+
+/* Mobile horizontal scroll edge fade affordance */
+.scroll-mask-edge {
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+/* Lenis smooth scroll recommended baseline */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Fluid display headline clamp utility */
+.fluid-display-hero {
+  font-size: clamp(2.25rem, 5vw + 0.75rem, 4.25rem);
+  line-height: 1.08;
+}
+
+.fluid-heading-section {
+  font-size: clamp(1.85rem, 3.5vw + 0.5rem, 3.25rem);
+  line-height: 1.15;
+}

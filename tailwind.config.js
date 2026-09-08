@@ -68,12 +68,26 @@ export default {
       },
       fontFamily: {
         serif: ['Zodiak', 'Georgia', 'serif'],
-        sans: ['Author', 'system-ui', 'sans-serif'],
+        sans: ['CabinetGrotesk', 'Author', 'system-ui', 'sans-serif'],
         grotesk: ['CabinetGrotesk', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'glow-honey': '0 0 25px -5px rgba(201, 155, 90, 0.35)',
         'glow-eucalyptus': '0 0 25px -5px rgba(134, 169, 155, 0.35)',
+      },
+      keyframes: {
+        shimmer: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 6s ease infinite',
+        float: 'float 5s ease-in-out infinite',
       },
     },
   },

@@ -12,8 +12,12 @@ import {
   Bone,
   Filter,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { IndexedListRow } from './IndexedListRow';
+import { MagneticButton } from './MagneticButton';
 
 interface ServiceDomain {
   id: string;
@@ -167,17 +171,27 @@ export const Services: React.FC = () => {
     ? servicesData 
     : servicesData.filter(d => d.category === filter);
 
+  const flagshipItem = servicesData.find(s => s.isFlagship);
+  const regularItems = filteredData.filter(s => s.id !== 'onco');
+
+  const filterOptions = [
+    { key: 'all', label: `All Portfolios (${servicesData.length})` },
+    { key: 'core', label: 'Core Operations & Oncology' },
+    { key: 'pharma', label: 'Pharma & Biologics' },
+    { key: 'specialty', label: 'Ophthalmology & Specialties' },
+  ];
+
   return (
-    <section id="services" className="py-16 sm:py-24 bg-warmwhite text-aubergine-950 relative border-b border-lavender/20">
+    <section id="services" className="py-20 sm:py-28 bg-warmwhite text-aubergine-950 relative border-b border-lavender/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4 sm:gap-6">
+        {/* Section Header with Fluid Scale and Contrast */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-aubergine-900/10 text-aubergine-900 font-grotesk font-semibold text-xs uppercase tracking-wider mb-3">
-              <span>Clinical Services & Therapeutic Domains</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-aubergine-900/10 text-aubergine-900 font-grotesk font-semibold text-[11px] uppercase tracking-[0.2em] mb-3">
+              <span>CLINICAL SERVICES & THERAPEUTIC DOMAINS</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-aubergine-950 leading-tight">
+            <h2 className="font-serif fluid-heading-section font-bold tracking-tight text-aubergine-950">
               Clinical Research Capabilities
             </h2>
           </div>
@@ -188,140 +202,139 @@ export const Services: React.FC = () => {
           </div>
         </div>
 
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10 pb-4 border-b border-lavender/25 overflow-x-auto">
-          <div className="flex items-center text-xs font-grotesk text-aubergine-700 mr-2 uppercase tracking-wider font-bold flex-shrink-0">
-            <Filter className="w-3.5 h-3.5 mr-1.5 text-honey-700" />
-            <span>Filter:</span>
-          </div>
-
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-all whitespace-nowrap ${
-              filter === 'all'
-                ? 'bg-aubergine-900 text-warmwhite shadow-md'
-                : 'bg-white text-aubergine-800 hover:bg-warmwhite-dark border border-lavender/40'
-            }`}
-          >
-            All Portfolios ({servicesData.length})
-          </button>
-
-          <button
-            onClick={() => setFilter('core')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-all whitespace-nowrap ${
-              filter === 'core'
-                ? 'bg-aubergine-900 text-warmwhite shadow-md'
-                : 'bg-white text-aubergine-800 hover:bg-warmwhite-dark border border-lavender/40'
-            }`}
-          >
-            Core Operations & Oncology
-          </button>
-
-          <button
-            onClick={() => setFilter('pharma')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-all whitespace-nowrap ${
-              filter === 'pharma'
-                ? 'bg-aubergine-900 text-warmwhite shadow-md'
-                : 'bg-white text-aubergine-800 hover:bg-warmwhite-dark border border-lavender/40'
-            }`}
-          >
-            Pharma & Biologics
-          </button>
-
-          <button
-            onClick={() => setFilter('specialty')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-all whitespace-nowrap ${
-              filter === 'specialty'
-                ? 'bg-aubergine-900 text-warmwhite shadow-md'
-                : 'bg-white text-aubergine-800 hover:bg-warmwhite-dark border border-lavender/40'
-            }`}
-          >
-            Ophthalmology & Specialties
-          </button>
-        </div>
-
-        {/* Card Grid: Matches user photo layout, light background */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {filteredData.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div 
-                key={item.id}
-                className={`group p-5 sm:p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between border ${
-                  item.isFlagship
-                    ? 'bg-white border-honey/60 shadow-lg ring-1 ring-honey/20 hover:border-honey hover:shadow-xl'
-                    : 'bg-white border-lavender/30 hover:border-aubergine-600/40 hover:shadow-lg'
-                }`}
-              >
-                <div>
-                  {/* Top Row: Icon + Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-2.5 sm:p-3 rounded-xl border transition-transform group-hover:scale-105 ${
-                      item.isFlagship
-                        ? 'bg-honey/15 border-honey/30 text-aubergine-950 shadow-sm'
-                        : 'bg-warmwhite-dark border-lavender/40 text-aubergine-900'
-                    }`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-
-                    <span className={`font-grotesk text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full ${
-                      item.isFlagship
-                        ? 'bg-honey/20 text-honey-800 border border-honey/40'
-                        : 'bg-eucalyptus/15 text-eucalyptus-800 border border-eucalyptus/30'
-                    }`}>
-                      {item.isFlagship && <Sparkles className="w-2.5 h-2.5 inline mr-1" />}
-                      {item.badge}
-                    </span>
+        {/* Flagship Domain Bento Hero: Oncology & Hemato-Oncology */}
+        {flagshipItem && (filter === 'all' || filter === 'core') && (
+          <div className="mb-12 rounded-3xl bg-gradient-to-br from-aubergine-950 via-aubergine-900 to-aubergine-800 text-warmwhite p-8 sm:p-12 border border-honey/40 shadow-2xl relative overflow-hidden group">
+            {/* Ambient gold glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-honey/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700" />
+            
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="p-3 rounded-2xl bg-honey text-aubergine-950 shadow-glow-honey">
+                    <Dna className="w-6 h-6" />
                   </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-aubergine-950 group-hover:text-honey-700 transition-colors leading-snug">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="font-sans text-xs text-aubergine-600 mt-1 mb-4 leading-relaxed line-clamp-2">
-                    {item.subtitle}
-                  </p>
-
-                  {/* 3 Concise Bullets */}
-                  <div className="space-y-2 pt-3 border-t border-lavender/20">
-                    {item.bullets.map((b, i) => (
-                      <div key={i} className="flex items-start text-xs font-sans text-aubergine-800 leading-tight">
-                        <span className="w-1.5 h-1.5 rounded-full bg-eucalyptus-600 mr-2 mt-1 flex-shrink-0" />
-                        <span>{b}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-grotesk font-bold uppercase tracking-wider bg-honey/20 text-honey border border-honey/40">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{flagshipItem.badge}</span>
+                  </span>
                 </div>
 
-                {/* Card Action Link */}
-                <div className="mt-5 pt-3 border-t border-lavender/20 flex items-center justify-between text-xs font-grotesk font-semibold text-honey-700 group-hover:text-honey-900">
-                  <a href="#feasibility" className="hover:underline">
-                    Site Feasibility
-                  </a>
-                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-warmwhite">
+                  {flagshipItem.title}
+                </h3>
+
+                <p className="font-sans text-base text-lavender max-w-xl">
+                  {flagshipItem.subtitle} — High-complexity protocol execution with comprehensive patient support and certified site coordinators.
+                </p>
+
+                {/* Bullets */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-lavender/15">
+                  {flagshipItem.bullets.map((bullet, i) => (
+                    <div key={i} className="flex items-center space-x-2 text-xs font-sans text-warmwhite/90">
+                      <CheckCircle2 className="w-4 h-4 text-eucalyptus flex-shrink-0" />
+                      <span>{bullet}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
+
+              {/* Action Column */}
+              <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-center gap-4 pt-4 lg:pt-0">
+                <MagneticButton href="#feasibility">
+                  <span className="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-xs uppercase tracking-widest shadow-glow-honey hover:bg-honey-400 transition-all">
+                    <span>Prioritize Protocol Review</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </MagneticButton>
+                <span className="text-[11px] font-sans text-lavender/70">
+                  Direct investigator liaison & rapid triage
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Filter Pills with Sliding Highlight & Edge Fade Scroll */}
+        <div className="mb-8 border-b border-lavender/30 pb-4">
+          <div className="flex items-center">
+            <div className="hidden sm:flex items-center text-xs font-grotesk text-aubergine-800 mr-3 uppercase tracking-wider font-bold flex-shrink-0">
+              <Filter className="w-3.5 h-3.5 mr-1.5 text-honey-700" />
+              <span>Filter:</span>
+            </div>
+
+            {/* Horizontal scroll container with fade mask */}
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-mask-edge py-1 w-full">
+              {filterOptions.map((opt) => {
+                const isActive = filter === opt.key;
+                return (
+                  <button
+                    key={opt.key}
+                    onClick={() => setFilter(opt.key as any)}
+                    className={`relative px-4 py-2 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
+                      isActive ? 'text-warmwhite' : 'text-aubergine-800 hover:text-aubergine-950'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeFilterPill"
+                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                        className="absolute inset-0 bg-aubergine-900 rounded-full shadow-md"
+                      />
+                    )}
+                    <span className="relative z-10">{opt.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Callout Banner */}
-        <div className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-2xl bg-aubergine-900 text-warmwhite border border-lavender/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-xl">
-          <div>
-            <h4 className="font-serif text-lg sm:text-2xl font-bold text-warmwhite">
+        {/* Numbered / Indexed Horizontal List (Replaces generic 4-card grid) */}
+        <div className="border-t border-lavender/30">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={filter}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+            >
+              {regularItems.map((item, index) => {
+                const rowNumber = String(index + 1).padStart(2, '0');
+                return (
+                  <IndexedListRow
+                    key={item.id}
+                    index={rowNumber}
+                    category={item.category}
+                    badge={item.badge}
+                    icon={item.icon}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    bullets={item.bullets}
+                    isFlagship={item.isFlagship}
+                  />
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Callout Banner with refined styling */}
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-aubergine-950 text-warmwhite border border-lavender/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1">
+            <h4 className="font-serif text-xl sm:text-2xl font-bold text-warmwhite">
               Principal Investigators & Hospital Centers
             </h4>
-            <p className="font-sans text-xs sm:text-sm text-lavender mt-1">
+            <p className="font-sans text-xs sm:text-sm text-lavender">
               Connect with our site management team for dedicated CRC staffing and protocol execution.
             </p>
           </div>
-          <a
-            href="#feasibility"
-            className="flex-shrink-0 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-xs uppercase tracking-wider hover:bg-honey-400 transition-all shadow-glow-honey"
-          >
-            Submit Feasibility
-          </a>
+          <MagneticButton href="#feasibility">
+            <span className="flex-shrink-0 px-7 py-3.5 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-xs uppercase tracking-widest hover:bg-honey-400 transition-all shadow-glow-honey inline-block">
+              Submit Feasibility
+            </span>
+          </MagneticButton>
         </div>
 
       </div>
