@@ -18,10 +18,10 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
+    { label: 'About', path: '/', hash: '#about' },
+    { label: 'Founder', path: '/founder' },
     { label: 'Services', path: '/', hash: '#services' },
-    { label: 'Courses & Trainings', path: '/', hash: '#trainings' },
-    { label: 'About Us', path: '/', hash: '#about' },
-    { label: 'Our Founder', path: '/founder' },
+    { label: 'Training', path: '/', hash: '#trainings' },
   ];
 
   const handleNavClick = (path: string, hash?: string) => {
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1 sm:space-x-2">
+          <nav className="hidden lg:flex items-center space-x-2">
             {navLinks.map((link) => {
               const isCurrent = link.path === currentPath && !link.hash;
               return (
@@ -79,14 +79,14 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <MagneticButton onClick={() => handleNavClick('/', '#feasibility')}>
               <span className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-xs tracking-wider uppercase shadow-glow-honey hover:bg-honey-400 hover:shadow-lg transition-all duration-200 cursor-pointer">
-                <span>Site Feasibility</span>
+                <span>Request Feasibility</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </MagneticButton>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-3 min-w-[44px] min-h-[44px] rounded-lg text-warmwhite hover:bg-aubergine-800 focus:outline-none flex items-center justify-center cursor-pointer"
@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0, height: 'auto' }}
               exit={{ opacity: 0, y: -10, height: 0 }}
               transition={{ duration: 0.28, ease: 'easeInOut' }}
-              className="md:hidden mt-4 overflow-hidden"
+              className="lg:hidden mt-4 overflow-hidden"
             >
               <div className="pt-4 pb-6 px-4 bg-aubergine-950/98 backdrop-blur-2xl border border-lavender/20 rounded-2xl space-y-4 shadow-2xl">
                 <nav className="flex flex-col space-y-2">

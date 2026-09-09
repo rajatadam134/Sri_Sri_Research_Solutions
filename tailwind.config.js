@@ -48,9 +48,9 @@ export default {
           900: '#473d4a',
         },
         warmwhite: {
-          DEFAULT: '#F8F5EF',
-          light: '#FFFFFF',
-          dark: '#EFEAE0',
+          DEFAULT: '#F2ECE1',
+          light: '#FAF7F2',
+          dark: '#E8E1D5',
         },
         honey: {
           DEFAULT: '#C99B5A',

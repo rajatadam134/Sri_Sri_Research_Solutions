@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Dna, 
   Building2, 
@@ -10,12 +10,10 @@ import {
   Flame, 
   Brain, 
   Bone,
-  Filter,
   Sparkles,
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { IndexedListRow } from './IndexedListRow';
 import { MagneticButton } from './MagneticButton';
 
@@ -165,21 +163,8 @@ const servicesData: ServiceDomain[] = [
 ];
 
 export const Services: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'core' | 'pharma' | 'specialty'>('all');
-
-  const filteredData = filter === 'all' 
-    ? servicesData 
-    : servicesData.filter(d => d.category === filter);
-
   const flagshipItem = servicesData.find(s => s.isFlagship);
-  const regularItems = filteredData.filter(s => s.id !== 'onco');
-
-  const filterOptions = [
-    { key: 'all', label: `All Portfolios (${servicesData.length})` },
-    { key: 'core', label: 'Core Operations & Oncology' },
-    { key: 'pharma', label: 'Pharma & Biologics' },
-    { key: 'specialty', label: 'Ophthalmology & Specialties' },
-  ];
+  const regularItems = servicesData.filter(s => s.id !== 'onco');
 
   return (
     <section id="services" className="py-20 sm:py-28 bg-warmwhite text-aubergine-950 relative border-b border-lavender/20">
@@ -203,7 +188,7 @@ export const Services: React.FC = () => {
         </div>
 
         {/* Flagship Domain Bento Hero: Oncology & Hemato-Oncology */}
-        {flagshipItem && (filter === 'all' || filter === 'core') && (
+        {flagshipItem && (
           <div className="mb-12 rounded-3xl bg-gradient-to-br from-aubergine-950 via-aubergine-900 to-aubergine-800 text-warmwhite p-8 sm:p-12 border border-honey/40 shadow-2xl relative overflow-hidden group">
             {/* Ambient gold glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-honey/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700" />
@@ -255,69 +240,26 @@ export const Services: React.FC = () => {
           </div>
         )}
 
-        {/* Filter Pills with Sliding Highlight & Edge Fade Scroll */}
-        <div className="mb-8 border-b border-lavender/30 pb-4">
-          <div className="flex items-center">
-            <div className="hidden sm:flex items-center text-xs font-grotesk text-aubergine-800 mr-3 uppercase tracking-wider font-bold flex-shrink-0">
-              <Filter className="w-3.5 h-3.5 mr-1.5 text-honey-700" />
-              <span>Filter:</span>
-            </div>
-
-            {/* Horizontal scroll container with fade mask */}
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-mask-edge py-1 w-full">
-              {filterOptions.map((opt) => {
-                const isActive = filter === opt.key;
-                return (
-                  <button
-                    key={opt.key}
-                    onClick={() => setFilter(opt.key as any)}
-                    className={`relative px-4 py-2 rounded-full text-xs font-grotesk font-bold tracking-wider uppercase transition-colors whitespace-nowrap min-h-[44px] flex items-center ${
-                      isActive ? 'text-warmwhite' : 'text-aubergine-800 hover:text-aubergine-950'
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeFilterPill"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                        className="absolute inset-0 bg-aubergine-900 rounded-full shadow-md"
-                      />
-                    )}
-                    <span className="relative z-10">{opt.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Numbered / Indexed Horizontal List (Replaces generic 4-card grid) */}
+        {/* Numbered / Indexed Horizontal List */}
         <div className="border-t border-lavender/30">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={filter}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              {regularItems.map((item, index) => {
-                const rowNumber = String(index + 1).padStart(2, '0');
-                return (
-                  <IndexedListRow
-                    key={item.id}
-                    index={rowNumber}
-                    category={item.category}
-                    badge={item.badge}
-                    icon={item.icon}
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    bullets={item.bullets}
-                    isFlagship={item.isFlagship}
-                  />
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+          <div>
+            {regularItems.map((item, index) => {
+              const rowNumber = String(index + 1).padStart(2, '0');
+              return (
+                <IndexedListRow
+                  key={item.id}
+                  index={rowNumber}
+                  category={item.category}
+                  badge={item.badge}
+                  icon={item.icon}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  bullets={item.bullets}
+                  isFlagship={item.isFlagship}
+                />
+              );
+            })}
+          </div>
         </div>
 
         {/* Callout Banner with refined styling */}

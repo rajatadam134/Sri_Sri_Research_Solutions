@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -101,16 +101,11 @@ export const IndexedListRow: React.FC<IndexedListRowProps> = ({
           </AnimatePresence>
         </div>
 
-        {/* Right Column: Site Feasibility Link */}
-        <div className="flex items-center justify-end min-w-[150px] pt-2 md:pt-0">
-          <a
-            href="#feasibility"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-grotesk font-bold uppercase tracking-wider text-aubergine-900 bg-white border border-lavender/40 group-hover:bg-honey group-hover:border-honey group-hover:text-aubergine-950 transition-all shadow-sm"
-          >
-            <span>Site Feasibility</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </a>
+        {/* Right Column: Bare Arrow Icon */}
+        <div className="flex items-center justify-end min-w-[40px] pt-2 md:pt-0">
+          <span className="text-aubergine-500 group-hover:text-honey-600 transition-colors p-2">
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+          </span>
         </div>
 
       </div>

@@ -5,83 +5,65 @@ export const Footer: React.FC = () => {
   const { navigate } = useRouter();
 
   return (
-    <footer className="bg-aubergine-950 text-warmwhite pt-16 pb-12 border-t border-lavender/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#140e15] text-warmwhite pt-16 pb-12 border-t border-lavender/10">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-lavender/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-lavender/10">
           
-          {/* Col 1 & 2: Brand Info & Tagline */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-tight text-warmwhite">
+          {/* Brand & Summary (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <button 
+              onClick={() => navigate('/')} 
+              className="flex flex-col text-left cursor-pointer group"
+            >
+              <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-warmwhite group-hover:text-honey-400 transition-colors">
                 Sri Sri Research Solutions
               </span>
-              <span className="font-grotesk text-[10px] tracking-[0.2em] uppercase text-eucalyptus font-semibold">
-                Clinical Research & SMO
+              <span className="font-sans text-xs text-lavender/70 font-medium">
+                Clinical Research & Site Management Organization
               </span>
-            </div>
+            </button>
             
-            <p className="font-serif italic text-sm text-honey/90">
-              “Supporting Better Research for Better Healthcare”
+            <p className="font-sans text-xs sm:text-sm text-lavender/80 max-w-sm leading-relaxed">
+              Supporting clinical trials across India through dedicated on-site coordination, regulatory alignment, and trial governance.
             </p>
-
-            <p className="font-sans text-xs sm:text-sm text-lavender max-w-md leading-relaxed">
-              Dedicated Clinical Research and Site Management Organization committed to supporting the successful execution of clinical trials with quality, integrity, and regulatory efficiency across India.
-            </p>
-            
-            <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-2.5 py-1 rounded bg-aubergine-800 border border-lavender/20 text-[10px] font-grotesk font-semibold text-eucalyptus uppercase">
-                ICH-GCP E6(R2)
-              </span>
-              <span className="px-2.5 py-1 rounded bg-aubergine-800 border border-lavender/20 text-[10px] font-grotesk font-semibold text-eucalyptus uppercase">
-                CDSCO Regulated
-              </span>
-              <span className="px-2.5 py-1 rounded bg-aubergine-800 border border-lavender/20 text-[10px] font-grotesk font-semibold text-eucalyptus uppercase">
-                Oncology Focus
-              </span>
-            </div>
           </div>
 
-          {/* Col 3: Services */}
-          <div>
-            <h4 className="font-grotesk text-xs uppercase tracking-wider font-bold text-honey mb-4">
-              Clinical Services
+          {/* Nav Group 1: Services (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-semibold text-warmwhite uppercase tracking-wider">
+              Services
             </h4>
-            <ul className="space-y-2 text-xs font-sans text-lavender">
+            <ul className="space-y-2 text-xs text-lavender/80">
               <li>
                 <button onClick={() => navigate('/', '#services')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Oncology & Hemato-Oncology
+                  Site management (SMO)
                 </button>
               </li>
               <li>
                 <button onClick={() => navigate('/', '#services')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Site Management (SMO)
+                  Regulatory & ethics
                 </button>
               </li>
               <li>
                 <button onClick={() => navigate('/', '#services')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  BA/BE Studies
+                  Oncology trials
                 </button>
               </li>
               <li>
                 <button onClick={() => navigate('/', '#services')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Ophthalmology Trials
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigate('/', '#services')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Regulatory & IEC Liaison
+                  BA/BE studies
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Training & Programs */}
-          <div>
-            <h4 className="font-grotesk text-xs uppercase tracking-wider font-bold text-honey mb-4">
-              Career & Trainings
+          {/* Nav Group 2: Training (3 cols) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-xs font-semibold text-warmwhite uppercase tracking-wider">
+              Training
             </h4>
-            <ul className="space-y-2 text-xs font-sans text-lavender">
+            <ul className="space-y-2 text-xs text-lavender/80">
               <li>
                 <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
                   Certificate in Clinical Research
@@ -94,71 +76,58 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  ICH-GCP Compliance Workshop
+                  ICH-GCP workshop
                 </button>
               </li>
               <li>
                 <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Hospital Site Staff Trainings
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  CRC Professional Training
+                  Hospital site staff training
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 5: Company & Leadership */}
-          <div>
-            <h4 className="font-grotesk text-xs uppercase tracking-wider font-bold text-honey mb-4">
+          {/* Nav Group 3: Organization & Action (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-semibold text-warmwhite uppercase tracking-wider">
               Organization
             </h4>
-            <ul className="space-y-2 text-xs font-sans text-lavender">
+            <ul className="space-y-2 text-xs text-lavender/80">
               <li>
                 <button onClick={() => navigate('/', '#about')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  About Sri Sri Research
+                  About
                 </button>
               </li>
               <li>
-                <button onClick={() => navigate('/founder')} className="text-honey hover:underline transition-colors font-semibold cursor-pointer text-left">
-                  Our Founder (Vishal Iraganti)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigate('/', '#about')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Mission & Vision
+                <button onClick={() => navigate('/founder')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
+                  Founder profile
                 </button>
               </li>
               <li>
                 <button onClick={() => navigate('/', '#feasibility')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Sponsor Feasibility Portal
+                  Feasibility request
                 </button>
               </li>
             </ul>
-
-            <div className="pt-4">
-              <button 
-                onClick={() => navigate('/', '#feasibility')} 
-                className="w-full text-center px-4 py-2.5 rounded-xl bg-honey text-aubergine-950 font-grotesk text-[11px] font-bold uppercase tracking-wider hover:bg-honey-400 transition-colors shadow-glow-honey cursor-pointer"
-              >
-                Request Feasibility
-              </button>
-            </div>
           </div>
 
         </div>
 
-        {/* Bottom copyright & disclaimer */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] font-sans text-lavender/70 gap-4">
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-lavender/60 gap-4">
           <p>
-            © {new Date().getFullYear()} Sri Sri Research Solutions Pvt. Ltd. All rights reserved.
+            © {new Date().getFullYear()} Sri Sri Research Solutions. All rights reserved.
           </p>
           <div className="flex items-center space-x-6">
-            <button onClick={() => navigate('/', '#about')} className="hover:text-warmwhite transition-colors cursor-pointer">About</button>
-            <button onClick={() => navigate('/founder')} className="hover:text-warmwhite transition-colors cursor-pointer">Leadership</button>
-            <button onClick={() => navigate('/', '#feasibility')} className="text-honey hover:underline cursor-pointer">Sponsor Portal</button>
+            <button onClick={() => navigate('/', '#about')} className="hover:text-warmwhite transition-colors cursor-pointer">
+              About
+            </button>
+            <button onClick={() => navigate('/founder')} className="hover:text-warmwhite transition-colors cursor-pointer">
+              Founder
+            </button>
+            <button onClick={() => navigate('/', '#feasibility')} className="text-honey-400 hover:text-honey-300 transition-colors cursor-pointer">
+              Request feasibility
+            </button>
           </div>
         </div>
 
@@ -166,3 +135,5 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+export default Footer;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, ShieldCheck, FileUp, Check, Clock } from 'lucide-react';
+import { CheckCircle2, FileUp } from 'lucide-react';
 
 export const FeasibilityForm: React.FC = () => {
   const [role, setRole] = useState<'sponsor' | 'investigator'>('sponsor');
@@ -11,7 +11,6 @@ export const FeasibilityForm: React.FC = () => {
     organization: '',
     therapeuticArea: 'Oncology',
     studyPhase: 'Phase II',
-    targetPatients: '',
     message: ''
   });
 
@@ -27,92 +26,52 @@ export const FeasibilityForm: React.FC = () => {
   };
 
   return (
-    <section id="feasibility" className="py-24 bg-warmwhite-dark relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="feasibility" className="bg-aubergine-950 text-warmwhite py-20 sm:py-28">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Feasibility Standards & Pledges (No dummy contacts) */}
-          <div className="lg:col-span-5 space-y-8">
-            <div>
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-md bg-honey/20 text-honey-700 font-grotesk font-semibold text-xs uppercase tracking-wider mb-3">
-                <span>Trial Intake</span>
-              </div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-aubergine-950 leading-tight">
-                Request Protocol Feasibility Or Hospital Site Partnership
-              </h2>
-              <p className="mt-4 font-sans text-base text-aubergine-700 leading-relaxed">
-                Submit trial parameters or hospital site capabilities. Review board delivers comprehensive site feasibility, patient recruitment forecasts, and regulatory pathway assessment.
+          {/* Left Column: Context & Verified Notes */}
+          <div className="lg:col-span-5 space-y-6">
+            <p className="text-[13px] font-medium text-lavender/80">
+              Protocol Feasibility
+            </p>
+
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-warmwhite tracking-tight">
+              Start a feasibility conversation
+            </h2>
+
+            <p className="font-sans text-base text-lavender/90 leading-relaxed max-w-md">
+              Share initial study parameters or hospital capabilities. We assess protocol alignment, site capacity, and operational requirements under strict confidentiality.
+            </p>
+
+            <div className="pt-6 border-t border-lavender/15 space-y-3 text-xs sm:text-[13px] text-lavender/80">
+              <p className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-honey" />
+                <span>For sponsors, CROs, and hospital research teams</span>
               </p>
-            </div>
-
-            {/* Scientific Standards & Guarantees */}
-            <div className="space-y-4 pt-4 border-t border-lavender/30">
-              <div className="flex items-start space-x-4 p-5 rounded-2xl bg-white border border-lavender/30 shadow-sm">
-                <div className="p-3 rounded-xl bg-eucalyptus/15 text-eucalyptus-700 mt-0.5">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-grotesk text-sm font-bold uppercase tracking-wider text-aubergine-900">
-                    48-Hour Feasibility Review
-                  </h4>
-                  <p className="font-sans text-xs text-aubergine-700 mt-1 leading-relaxed">
-                    Dedicated clinical evaluation team maps investigator availability, site infrastructure, and protocol feasibility within 48 business hours.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4 p-5 rounded-2xl bg-white border border-lavender/30 shadow-sm">
-                <div className="p-3 rounded-xl bg-honey/15 text-honey-700 mt-0.5">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-grotesk text-sm font-bold uppercase tracking-wider text-aubergine-900">
-                    Mutual Confidentiality & NDA
-                  </h4>
-                  <p className="font-sans text-xs text-aubergine-700 mt-1 leading-relaxed">
-                    All submitted protocols, synopses, and investigator credentials protected under statutory non-disclosure frameworks.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4 p-5 rounded-2xl bg-white border border-lavender/30 shadow-sm">
-                <div className="p-3 rounded-xl bg-aubergine-100 text-aubergine-700 mt-0.5">
-                  <Check className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="font-grotesk text-sm font-bold uppercase tracking-wider text-aubergine-900">
-                    CDSCO & Ethics Committee Alignment
-                  </h4>
-                  <p className="font-sans text-xs text-aubergine-700 mt-1 leading-relaxed">
-                    Preliminary protocol triage validates alignment with NDCT Rules 2019 and registered Institutional Ethics Committees.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Notice */}
-            <div className="p-4 rounded-2xl bg-aubergine-900 text-warmwhite text-xs flex items-center space-x-3">
-              <ShieldCheck className="w-5 h-5 text-eucalyptus flex-shrink-0" />
-              <span>Direct secure portal transmission. Zero third-party data broker sharing.</span>
+              <p className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-honey" />
+                <span>Mutual NDA requests can be indicated below</span>
+              </p>
             </div>
           </div>
 
-          {/* Right Column: Interactive Form */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-lavender/30 shadow-xl">
+          {/* Right Column: Clean Form */}
+          <div className="lg:col-span-7">
             {submitted ? (
-              <div className="text-center py-12 space-y-4">
-                <div className="w-16 h-16 bg-eucalyptus/20 text-eucalyptus-700 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-10 h-10" />
+              <div className="py-12 text-center space-y-4 bg-aubergine-900/60 p-8 rounded-[4px] border border-lavender/15">
+                <div className="w-12 h-12 bg-eucalyptus/20 text-eucalyptus rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-aubergine-950">
-                  Feasibility Request Submitted
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-warmwhite">
+                  Feasibility inquiry received
                 </h3>
-                <p className="font-sans text-sm text-aubergine-700 max-w-md mx-auto">
-                  Inquiry logged for {formData.name} ({formData.organization}). Preliminary study assessment report will be dispatched within 48 hours.
+                <p className="text-sm text-lavender max-w-md mx-auto leading-relaxed">
+                  Thank you, {formData.name} ({formData.organization}). Our clinical team will review your study parameters and follow up directly.
                 </p>
                 {selectedFile && (
-                  <p className="font-sans text-xs text-eucalyptus-700 font-medium">
+                  <p className="text-xs text-eucalyptus font-medium">
                     Attached file: {selectedFile.name}
                   </p>
                 )}
@@ -121,27 +80,27 @@ export const FeasibilityForm: React.FC = () => {
                     setSubmitted(false);
                     setSelectedFile(null);
                   }}
-                  className="mt-4 px-6 py-2.5 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-xs uppercase tracking-wider hover:bg-honey-400 transition-all"
+                  className="mt-2 px-5 py-2.5 rounded-[4px] bg-honey-600 hover:bg-honey-700 text-white font-medium text-xs tracking-wide transition-colors cursor-pointer"
                 >
-                  Submit Another Inquiry
+                  Send another inquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 
-                {/* Role Switcher */}
+                {/* Role Toggle */}
                 <div>
-                  <label className="block text-xs font-grotesk font-bold uppercase tracking-wider text-aubergine-700 mb-2">
-                    Inquiry Entity:
+                  <label className="block text-xs font-medium text-lavender/80 mb-2">
+                    Inquiry type
                   </label>
-                  <div className="grid grid-cols-2 gap-3 p-1.5 bg-warmwhite rounded-2xl border border-lavender/30">
+                  <div className="grid grid-cols-2 gap-2 p-1 bg-aubergine-900/80 rounded-[4px] border border-lavender/15">
                     <button
                       type="button"
                       onClick={() => setRole('sponsor')}
-                      className={`py-2.5 rounded-xl font-grotesk font-bold text-xs tracking-wider uppercase transition-all ${
+                      className={`py-2 text-xs font-medium rounded-[2px] transition-colors cursor-pointer ${
                         role === 'sponsor'
-                          ? 'bg-aubergine-700 text-warmwhite shadow-md'
-                          : 'text-aubergine-700 hover:text-aubergine-950'
+                          ? 'bg-warmwhite text-aubergine-950 font-semibold'
+                          : 'text-lavender/80 hover:text-warmwhite'
                       }`}
                     >
                       Sponsor / CRO / Biotech
@@ -149,10 +108,10 @@ export const FeasibilityForm: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setRole('investigator')}
-                      className={`py-2.5 rounded-xl font-grotesk font-bold text-xs tracking-wider uppercase transition-all ${
+                      className={`py-2 text-xs font-medium rounded-[2px] transition-colors cursor-pointer ${
                         role === 'investigator'
-                          ? 'bg-aubergine-700 text-warmwhite shadow-md'
-                          : 'text-aubergine-700 hover:text-aubergine-950'
+                          ? 'bg-warmwhite text-aubergine-950 font-semibold'
+                          : 'text-lavender/80 hover:text-warmwhite'
                       }`}
                     >
                       Hospital / Investigator
@@ -163,43 +122,43 @@ export const FeasibilityForm: React.FC = () => {
                 {/* Name & Organization */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                      Lead Contact Name *
+                    <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                      Contact name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Principal Investigator / Clinical Director"
+                      placeholder="Name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-[4px] bg-aubergine-900/60 border border-lavender/20 text-sm text-warmwhite placeholder:text-lavender/40 focus:outline-none focus:border-honey-500 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                      {role === 'sponsor' ? 'Pharmaceutical / Biotech Company' : 'Hospital / Clinical Center'} *
+                    <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                      {role === 'sponsor' ? 'Organization / Company *' : 'Hospital / Institution *'}
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder={role === 'sponsor' ? 'Enterprise Name' : 'Medical Institution Name'}
+                      placeholder="Organization"
                       value={formData.organization}
                       onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-[4px] bg-aubergine-900/60 border border-lavender/20 text-sm text-warmwhite placeholder:text-lavender/40 focus:outline-none focus:border-honey-500 transition-colors"
                     />
                   </div>
                 </div>
 
-                {/* Study Scope Details */}
+                {/* Therapeutic Area & Phase */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                      Therapeutic Area
+                    <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                      Therapeutic area
                     </label>
                     <select
                       value={formData.therapeuticArea}
                       onChange={(e) => setFormData({ ...formData, therapeuticArea: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-[4px] bg-aubergine-900/90 border border-lavender/20 text-sm text-warmwhite focus:outline-none focus:border-honey-500"
                     >
                       <option value="Oncology">Oncology & Hemato-Oncology</option>
                       <option value="Ophthalmology">Ophthalmology</option>
@@ -209,103 +168,95 @@ export const FeasibilityForm: React.FC = () => {
                       <option value="Dermatology">Dermatology & Immunology</option>
                       <option value="Neurology">Neurology & CNS</option>
                       <option value="Orthopedics">Orthopedics & Rheumatology</option>
-                      <option value="Other">Other Specialized Domain</option>
+                      <option value="Other">Other clinical domain</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                      {role === 'sponsor' ? 'Study Phase' : 'Site Classification'}
+                    <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                      {role === 'sponsor' ? 'Study phase' : 'Site classification'}
                     </label>
                     <select
                       value={formData.studyPhase}
                       onChange={(e) => setFormData({ ...formData, studyPhase: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white"
+                      className="w-full px-3.5 py-2.5 rounded-[4px] bg-aubergine-900/90 border border-lavender/20 text-sm text-warmwhite focus:outline-none focus:border-honey-500"
                     >
                       {role === 'sponsor' ? (
                         <>
                           <option value="Phase I">Phase I (Healthy Volunteer / First-in-Human)</option>
                           <option value="Phase II">Phase II (Proof-of-Concept / Dose Finding)</option>
                           <option value="Phase III">Phase III (Pivotal Confirmatory Trial)</option>
-                          <option value="Phase IV">Phase IV / Post-Marketing Surveillance</option>
-                          <option value="BA/BE">BA / BE Bioequivalence</option>
+                          <option value="Phase IV">Phase IV / Post-Marketing Registry</option>
+                          <option value="BA/BE">BA / BE Study</option>
                           <option value="Device">Medical Device Evaluation</option>
                         </>
                       ) : (
                         <>
-                          <option value="Registered Trial Site">Existing Site with Registered IEC</option>
-                          <option value="New Trial Department">Setup New Clinical Trial Unit</option>
-                          <option value="Investigator Registry">Individual Investigator Enrollment</option>
+                          <option value="Registered Trial Site">Existing site with registered Ethics Committee</option>
+                          <option value="New Trial Department">New clinical research unit</option>
+                          <option value="Investigator Registry">Individual investigator interest</option>
                         </>
                       )}
                     </select>
                   </div>
                 </div>
 
-                {/* Target sample & specifics */}
+                {/* Parameters & Message */}
                 <div>
-                  <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                    Study Parameters & Clinical Objectives
+                  <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                    Study parameters / site notes
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Provide anticipated sample size, primary inclusion criteria, target trial initiation timeline, or site specialities..."
+                    placeholder={role === 'sponsor' ? "Enrollment timeline, target sample size, key criteria..." : "Site bed strength, clinical equipment, ethics committee status..."}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-warmwhite/50 border border-lavender/40 text-sm font-sans focus:outline-none focus:border-honey focus:bg-white transition-colors"
-                  ></textarea>
+                    className="w-full px-3.5 py-2.5 rounded-[4px] bg-aubergine-900/60 border border-lavender/20 text-sm text-warmwhite placeholder:text-lavender/40 focus:outline-none focus:border-honey-500 transition-colors resize-none"
+                  />
                 </div>
 
-                {/* File Upload Dropzone for Protocol Synopsis */}
+                {/* File Attachment */}
                 <div>
-                  <label className="block text-xs font-grotesk font-bold text-aubergine-800 uppercase tracking-wider mb-1">
-                    Protocol Synopsis / Investigator Profile (Optional)
+                  <label className="block text-xs font-medium text-warmwhite mb-1.5">
+                    Protocol synopsis / site profile (optional)
                   </label>
-                  <label className="flex flex-col items-center justify-center p-5 rounded-2xl border-2 border-dashed border-lavender/50 hover:border-honey bg-warmwhite/40 cursor-pointer transition-colors group">
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2.5 rounded-xl bg-aubergine-100 text-aubergine-700 group-hover:bg-honey group-hover:text-aubergine-950 transition-colors">
-                        <FileUp className="w-5 h-5" />
-                      </div>
-                      <div className="text-left">
-                        <span className="text-xs font-grotesk font-bold text-aubergine-900 block">
-                          {selectedFile ? selectedFile.name : 'Attach Protocol Synopsis or Site CV'}
-                        </span>
-                        <span className="text-[11px] font-sans text-aubergine-500 block">
-                          PDF, DOCX up to 25MB
-                        </span>
-                      </div>
-                    </div>
-                    <input
-                      type="file"
-                      accept=".pdf,.doc,.docx"
+                  <div className="relative border border-dashed border-lavender/30 hover:border-lavender/60 rounded-[4px] p-3 text-center transition-colors bg-aubergine-900/40">
+                    <input 
+                      type="file" 
                       onChange={handleFileChange}
-                      className="hidden"
+                      accept=".pdf,.doc,.docx"
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                     />
-                  </label>
+                    <div className="flex items-center justify-center space-x-2 text-xs text-lavender/80">
+                      <FileUp className="w-4 h-4 text-honey-500" />
+                      <span>{selectedFile ? selectedFile.name : "Attach PDF or DOCX file"}</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Mutual NDA Checkbox */}
-                <div className="flex items-start space-x-3 p-3.5 rounded-xl bg-warmwhite border border-lavender/30">
+                {/* NDA Checkbox */}
+                <div className="flex items-start space-x-3 pt-1">
                   <input
+                    id="nda"
                     type="checkbox"
-                    id="ndaCheck"
                     checked={needsNda}
                     onChange={(e) => setNeedsNda(e.target.checked)}
-                    className="mt-0.5 h-4 w-4 rounded border-lavender text-honey focus:ring-honey"
+                    className="mt-0.5 w-4 h-4 rounded-[2px] text-honey-600 bg-aubergine-900 border-lavender/40 focus:ring-0"
                   />
-                  <label htmlFor="ndaCheck" className="text-xs font-sans text-aubergine-800 cursor-pointer">
-                    <span className="font-semibold block">Request Mutual NDA Prior to Disclosure</span>
-                    Send standard two-way Non-Disclosure Agreement before exchange of sensitive protocol dossiers.
+                  <label htmlFor="nda" className="text-xs text-lavender/80 cursor-pointer leading-snug">
+                    Request mutual Non-Disclosure Agreement (NDA) before sharing detailed protocol documentation.
                   </label>
                 </div>
 
-                {/* Submit */}
-                <button
-                  type="submit"
-                  className="w-full py-4 rounded-xl bg-honey text-aubergine-950 font-grotesk font-bold text-sm uppercase tracking-wider shadow-glow-honey hover:bg-honey-400 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center space-x-2"
-                >
-                  <span>Submit Feasibility Inquiry</span>
-                  <Send className="w-4 h-4" />
-                </button>
+                {/* Submit Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full py-3 px-6 rounded-[4px] bg-honey-600 hover:bg-honey-700 text-white font-medium text-sm transition-colors cursor-pointer"
+                  >
+                    Send request
+                  </button>
+                </div>
+
               </form>
             )}
           </div>
@@ -316,3 +267,5 @@ export const FeasibilityForm: React.FC = () => {
     </section>
   );
 };
+
+export default FeasibilityForm;
