@@ -107,7 +107,7 @@ export const FounderPage: React.FC = () => {
             </div>
 
             {/* Clear Primary Action */}
-            <div className="pt-8 border-t border-aubergine-900/10">
+            <div className="pt-8 border-t border-aubergine-900/10 flex flex-wrap items-center gap-6">
               <button
                 onClick={() => navigate('/', '#feasibility')}
                 className="inline-flex items-center text-sm font-medium text-aubergine-950 hover:text-honey-700 transition-colors group cursor-pointer"
@@ -115,6 +115,13 @@ export const FounderPage: React.FC = () => {
                 <span>Discuss a study</span>
                 <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-0.5" />
               </button>
+
+              <a
+                href="mailto:vishal@srisriresearchsolutions.info"
+                className="inline-flex items-center text-sm font-medium text-honey-700 hover:text-honey-800 transition-colors"
+              >
+                <span>vishal@srisriresearchsolutions.info</span>
+              </a>
             </div>
 
           </div>

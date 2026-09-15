@@ -27,6 +27,15 @@ export const Footer: React.FC = () => {
             <p className="font-sans text-xs sm:text-sm text-lavender/80 max-w-sm leading-relaxed">
               Supporting clinical trials across India through dedicated on-site coordination, regulatory alignment, and trial governance.
             </p>
+
+            <div className="pt-1">
+              <a 
+                href="mailto:vishal@srisriresearchsolutions.info"
+                className="inline-flex items-center text-xs text-honey-300 hover:text-honey font-medium transition-colors cursor-pointer"
+              >
+                <span>vishal@srisriresearchsolutions.info</span>
+              </a>
+            </div>
           </div>
 
           {/* Nav Group 1: Services (2 cols) */}
@@ -72,16 +81,6 @@ export const Footer: React.FC = () => {
               <li>
                 <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
                   Certificate in Pharmacovigilance
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  ICH-GCP workshop
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigate('/', '#trainings')} className="hover:text-warmwhite transition-colors cursor-pointer text-left">
-                  Hospital site staff training
                 </button>
               </li>
             </ul>

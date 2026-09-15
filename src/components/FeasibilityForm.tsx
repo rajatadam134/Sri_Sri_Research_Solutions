@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, FileUp } from 'lucide-react';
+import { CheckCircle2, FileUp, Mail } from 'lucide-react';
 
 export const FeasibilityForm: React.FC = () => {
   const [role, setRole] = useState<'sponsor' | 'investigator'>('sponsor');
@@ -14,6 +14,27 @@ export const FeasibilityForm: React.FC = () => {
     message: ''
   });
 
+  const recipientEmail = 'vishal@srisriresearchsolutions.info';
+
+  const generateMailtoUrl = () => {
+    const subject = encodeURIComponent(`[Feasibility Inquiry] ${formData.organization} - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Protocol Feasibility Inquiry\n` +
+      `----------------------------------------\n` +
+      `Inquiry Type: ${role === 'sponsor' ? 'Sponsor / CRO / Biotech' : 'Hospital / Investigator'}\n` +
+      `Contact Name: ${formData.name}\n` +
+      `Organization: ${formData.organization}\n` +
+      `Therapeutic Area: ${formData.therapeuticArea}\n` +
+      `Study Phase / Classification: ${formData.studyPhase}\n` +
+      `NDA Requested: ${needsNda ? 'Yes (Mutual NDA requested)' : 'No'}\n` +
+      (selectedFile ? `Attached Document: ${selectedFile.name} (please attach to this email)\n` : '') +
+      `\nStudy Parameters / Site Notes:\n${formData.message || 'None provided'}\n\n` +
+      `----------------------------------------\n` +
+      `Sent via Sri Sri Research Solutions web portal`
+    );
+    return `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setSelectedFile(e.target.files[0]);
@@ -23,6 +44,9 @@ export const FeasibilityForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    // Redirect inquiries directly to the business email
+    const mailtoUrl = generateMailtoUrl();
+    window.location.href = mailtoUrl;
   };
 
   return (
@@ -54,6 +78,18 @@ export const FeasibilityForm: React.FC = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-honey" />
                 <span>Mutual NDA requests can be indicated below</span>
               </p>
+              <p className="flex items-center space-x-2 pt-2 text-warmwhite">
+                <Mail className="w-4 h-4 text-honey flex-shrink-0" />
+                <span>
+                  Direct email:{' '}
+                  <a 
+                    href={`mailto:${recipientEmail}`}
+                    className="text-honey hover:underline font-medium"
+                  >
+                    {recipientEmail}
+                  </a>
+                </span>
+              </p>
             </div>
           </div>
 
@@ -68,22 +104,38 @@ export const FeasibilityForm: React.FC = () => {
                   Feasibility inquiry received
                 </h3>
                 <p className="text-sm text-lavender max-w-md mx-auto leading-relaxed">
-                  Thank you, {formData.name} ({formData.organization}). Our clinical team will review your study parameters and follow up directly.
+                  Thank you, {formData.name} ({formData.organization}). An email inquiry has been opened to{' '}
+                  <a 
+                    href={`mailto:${recipientEmail}`}
+                    className="text-honey hover:underline font-medium"
+                  >
+                    {recipientEmail}
+                  </a>. Our clinical team will follow up directly.
                 </p>
                 {selectedFile && (
                   <p className="text-xs text-eucalyptus font-medium">
                     Attached file: {selectedFile.name}
                   </p>
                 )}
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setSelectedFile(null);
-                  }}
-                  className="mt-2 px-5 py-2.5 rounded-[4px] bg-honey-600 hover:bg-honey-700 text-white font-medium text-xs tracking-wide transition-colors cursor-pointer"
-                >
-                  Send another inquiry
-                </button>
+                <div className="pt-2">
+                  <a
+                    href={generateMailtoUrl()}
+                    className="inline-flex items-center text-xs text-honey hover:text-honey-300 underline"
+                  >
+                    Click here to open email composer again
+                  </a>
+                </div>
+                <div>
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setSelectedFile(null);
+                    }}
+                    className="mt-2 px-5 py-2.5 rounded-[4px] bg-honey-600 hover:bg-honey-700 text-white font-medium text-xs tracking-wide transition-colors cursor-pointer"
+                  >
+                    Send another inquiry
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">

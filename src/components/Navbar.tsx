@@ -37,17 +37,17 @@ export const Navbar: React.FC = () => {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('/')} 
-            className="flex flex-col text-left group cursor-pointer"
+            className="flex flex-col text-left group cursor-pointer flex-shrink min-w-0 pr-2"
           >
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-warmwhite group-hover:text-honey transition-colors">
+            <span className="font-serif text-[clamp(1.18rem,5.75vw,1.875rem)] sm:text-3xl font-bold tracking-tight text-warmwhite group-hover:text-honey transition-colors whitespace-nowrap">
               Sri Sri Research Solutions
             </span>
-            <span className="font-grotesk text-[10px] tracking-[0.25em] uppercase text-eucalyptus font-semibold">
+            <span className="font-grotesk text-[10px] sm:text-xs tracking-[0.22em] uppercase text-eucalyptus font-semibold mt-0.5 whitespace-nowrap">
               Clinical Research & SMO
             </span>
           </button>
@@ -86,10 +86,10 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center flex-shrink-0">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-3 min-w-[44px] min-h-[44px] rounded-lg text-warmwhite hover:bg-aubergine-800 focus:outline-none flex items-center justify-center cursor-pointer"
+              className="p-2 sm:p-2.5 min-w-[40px] min-h-[40px] rounded-lg text-warmwhite hover:bg-aubergine-800 focus:outline-none flex items-center justify-center cursor-pointer"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

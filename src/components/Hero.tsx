@@ -56,15 +56,21 @@ export const Hero: React.FC = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl space-y-6 sm:space-y-8">
           
-          {/* Eyebrow Context Label */}
+          {/* Eyebrow Context Label / Prominent Brand Identity */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 text-xs font-grotesk font-semibold text-eucalyptus uppercase tracking-[0.2em]"
+            className="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-aubergine-900/85 border border-honey/40 shadow-sm backdrop-blur-md"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-eucalyptus" />
-            <span>Clinical research & site management in India</span>
+            <span className="w-2 h-2 rounded-full bg-honey animate-pulse" />
+            <span className="text-xs sm:text-sm font-grotesk font-bold text-warmwhite tracking-[0.18em] uppercase">
+              Sri Sri Research Solutions
+            </span>
+            <span className="text-honey/60 text-xs hidden sm:inline">•</span>
+            <span className="text-[11px] sm:text-xs font-grotesk text-eucalyptus uppercase tracking-[0.16em] font-medium hidden sm:inline">
+              Clinical Research & SMO
+            </span>
           </motion.div>
 
           {/* Headline in Zodiak Serif with subtle gold italic accent */}
